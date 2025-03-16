@@ -1,0 +1,703 @@
+@font-face {
+    font-family: 'FoundersGrotesk';
+    src: url('TestFoundersGrotesk-Regular-BF66175e972ac1c.otf') format('opentype');
+    font-weight: normal;
+    font-style: normal;
+}
+
+@font-face {
+    font-family: 'FoundersGrotesk';
+    src: url('TestFoundersGrotesk-Bold-BF66175e9700615.otf') format('opentype');
+    font-weight: bold;
+    font-style: normal;
+}
+
+body, html {
+    font-family: 'FoundersGrotesk', sans-serif;
+    background-color: #53232300;
+}
+
+#background {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    z-index: -1; /* Puts it behind everything */
+    background-color: #000000;
+}
+
+p {
+    margin: 15px;
+}
+
+h3 {
+    margin-bottom: 5px;
+}
+
+/* Moved menu toggle outside navbar */
+.menu-toggle {
+    position: fixed;
+    top: 10px;
+    left: 10px;
+    font-size: 1.2rem;
+    cursor: pointer;
+    border: none;
+    background-color: rgba(255, 255, 255, 0);
+    backdrop-filter: blur(1.5px);
+
+    color: #fff;
+    padding: 8px 12px;
+    z-index: 2001; /* Above navbar */
+    border-radius: 5px;
+    transition: color 0.4s ease, background-color 0.4s ease;
+}
+
+.menu-toggle:hover {
+    color: rgb(0, 0, 0);
+    background-color: red;
+}
+
+.navbar {
+    background-color: rgba(255, 255, 255, 0);
+    backdrop-filter: blur(1.5px);
+    color: white;
+    position: fixed;
+    width: 60%;
+    top: 10px;
+    left: 50%;
+    transform: translateX(-50%);
+    z-index: 2000;
+    display: flex;
+    flex-direction: column; /* Change to column layout */
+    padding: 10px;
+    box-shadow: 0 4px 8px rgb(0, 0, 0);
+    border-radius: 5px;
+    transition: background-color 0.5s ease;
+}
+
+.navbar-top {
+    display: flex;
+    justify-content: center; /* Center the home button */
+    width: 100%;
+    align-items: center;
+}
+
+
+
+.galleryshop-container {
+    display: flex;
+    justify-content: center; /* Center horizontally */
+    width: 100%;
+    position: relative;
+    transform: none;
+    left: 0;
+    top: 0;
+}
+
+.galleryshop-button {
+    text-decoration: none;
+    color: white;
+    font-size: 1.0rem;
+    border-radius: 5px;
+    margin: -2px 5px;
+    transition: color 5.0s ease-in-out;
+    
+
+}
+
+.galleryshop-button:hover {
+    transition: color 1.0s ease-in-out;
+    color: red;
+
+}
+
+.container {
+    max-width: 10vw;
+    padding: 0 20px;
+    box-sizing: border-box;
+}
+
+.home-button {
+    text-decoration: none;
+    color: white;
+    font-size: 1.8rem;
+    cursor: pointer;
+    transition: color 1.0s ease;
+
+    font-weight: bold;
+}
+
+.home-button:hover {
+    color: red;
+}
+
+/* Removed search toggle container styles */
+
+#dropdown-menu {
+    display: none;
+    position: fixed;
+    line-height: 1px;
+    top: 10px; /* Adjusted positioning */
+    left: 10px;
+    background-color: rgba(0, 0, 0, 0.8); /* Darker background */
+    backdrop-filter: blur(10px);
+    color: white;
+    width: 250px; /* Fixed width for menu */
+    box-shadow: 0 4px 8px rgb(0, 0, 0);
+    opacity: 0;
+    pointer-events: none;
+    z-index: 1999; /* Below menu toggle but above other content */
+    border-radius: 5px;
+    padding: 10px;
+    margin-top: 40px; /* Space for the menu button */
+}
+
+#dropdown-menu.show {
+    display: block;
+    opacity: 1;
+    pointer-events: auto;
+}
+.search-input-container {
+    position: relative;
+    width: 90%;
+    margin: 10px auto;
+}
+
+.search-icon {
+    position: absolute;
+    right: -9px;
+    top: 50%;
+    transform: translateY(-50%);
+    cursor: pointer;
+    color: white;
+}
+
+.search-icon:hover {
+    color: red;
+}
+/* Added styles for the dropdown search */
+.dropdown-search-container {
+    margin-top: 20px;
+    width: 100%;
+}
+
+.dropdown-search-input {
+    width: 90%;
+    padding: 8px;
+    margin: 10px auto;
+    display: block;
+    border-radius: 5px;
+    border: 1px solid #838383;
+    background-color: rgba(255, 255, 255, 0.1);
+    color: white;
+}
+
+.dropdown-search-input::placeholder {
+    color: #aaa;
+}
+
+.menu-title {
+    color: #838383;
+    margin: 10px;
+    font-weight: bold;
+}
+
+.sort-options,
+.view-options,
+.sort-option,
+.view-option {
+    padding: 0rem 0.6rem;
+    cursor: pointer;
+}
+
+.sort-option:hover,
+.view-option:hover {
+    background-color: rgba(255, 255, 255, 0.088);
+    border-radius: 5px;
+}
+
+.sort-by, .view-by,
+.sort-options li, .view-options li {
+    padding: 10px;
+    list-style: none;
+    cursor: pointer;
+}
+
+.main-content {
+    margin: auto; /* This centers the content */
+}
+
+/* Fixing the .item-description styles to prevent overflow */
+.gallery-view .gallery-item .item-description {
+    /* Wrapping words to avoid overflow */
+    word-wrap: break-word;
+    /* Overflow settings for hiding and appending an ellipsis to text that overflows its box */
+    overflow: hidden;
+    text-overflow: ellipsis;
+    /* These properties turn the block into a 'flexbox' to center the content */
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    box-sizing: border-box;
+ 
+}
+
+.gallery-view {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(200px, 1fr)); /* Creates a responsive grid */
+    gap: 10px;
+    padding: 20px;
+    margin-top: 60px;
+    max-width: 100vw;
+    overflow: hidden;
+}
+
+.gallery-item {
+    background-color: rgba(255, 255, 255, 0); /* Adjust color and opacity to match mockup */
+    backdrop-filter: blur(1.5px);
+    color: white;
+    border-radius: 5px;
+    transition: background-color 0.5s ease; /* Smooth scaling transition */
+    box-shadow: 0 4px 8px rgb(0, 0, 0);
+    position: relative;
+  overflow: hidden;
+  transition: transform 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+
+}
+.gallery-item:hover {
+    background-color: rgba(255, 255, 255, 0.088);
+}
+
+
+  
+
+/* Adjustments for gallery item images in large view mode */
+.gallery-view.large .gallery-item .gallery-image {
+    width: 200px; /* Set width to 50px */
+    height: 200px; /* Set height to 50px */
+    object-fit: cover; /* Ensure the aspect ratio is maintained without distortion */
+
+}
+.gallery-view.large .gallery-item img {
+    width: auto; /* Adjust width to auto so it scales with the height */
+    height: 200px; /* Set a fixed height or max-height as you prefer */
+    object-fit: contain; /* Ensures the image fits within the dimensions without stretching */
+}
+/* Adjustments for gallery item images in small view mode */
+.gallery-view.small .gallery-item .gallery-image {
+    width: 120px; /* Set width to 50px */
+    height: 120px; /* Set height to 50px */
+    object-fit: cover; /* Ensure the aspect ratio is maintained without distortion */
+}
+/* Ensure gallery items in small view are displayed as a list */
+.gallery-view.small .gallery-container {
+    display: flex;
+    flex-direction: column;
+}
+
+.gallery-view.small .gallery-item {
+    display: flex;
+    align-items: center;
+    justify-content: start; /* Align items to the start of the container */
+    width: 100%; /* Full width */
+    padding: 10px;
+    background-color: rgba(255, 255, 255, 0.1); /* Adjust color and opacity to match mockup */
+    backdrop-filter: blur(1.5px);
+    border-radius: 5px;
+    overflow: hidden;
+}
+.item-description {
+    word-wrap: break-word;
+}
+/* Apply to the description paragraph in small view */
+.gallery-view.small .gallery-item .item-description {
+    margin-left: 0; /* Ensures alignment with other text, adjust as needed */
+    white-space: nowrap; /* Keep the text in a single line */
+    overflow: hidden; /* Hide the overflow */
+    text-overflow: ellipsis; /* Add ellipsis at the end of the text */
+}
+  /* Apply to the description paragraph in large view */
+  .gallery-view.large .gallery-item .item-description {
+    /* Styles to add ellipsis after a certain height */
+    overflow: hidden;
+    text-overflow: ellipsis;
+    display: -webkit-box;
+    -webkit-line-clamp: 2; /* Limit to three lines */
+    -webkit-box-orient: vertical;
+    box-sizing: border-box;
+    width: 100%; /* Ensure the width is set to allow for text-overflow */
+    height: 0px; /* Adjust the height to fit three lines of text */
+}
+/* Hide all text content except for the title in large view mode */
+.gallery-view.large .gallery-item .item-year,
+.gallery-view.large .gallery-item .item-medium,
+.gallery-view.large .gallery-item .item-description {
+    display: none; /* Hide year, medium, and description */
+}
+
+/* Ensure the title is displayed and styled appropriately in large view mode */
+.gallery-view.large .gallery-item .item-title {
+  
+    display: block; /* Make sure the title is always visible */
+    font-size: 1rem;
+}
+
+:root {
+    --type-ratio: 1.2;
+    --h3: calc(1rem * var(--type-ratio));
+    --h2: calc(var(--h3) * var(--type-ratio));
+    --h1: calc(var(--h2) * var(--type-ratio));
+  }
+  .item-title {
+    font-size: var(--h3);
+    letter-spacing: 0.03em;
+    text-shadow: 0 2px 4px rgba(0,0,0,0.5);
+  }
+
+.gallery-view.large .gallery-item {
+    display: flex;
+    flex-direction: column; /* Stacks children (image and text) vertically */
+    align-items: center; /* Centers children horizontally */
+    text-align: center; /* Centers text */
+    overflow: hidden;
+    border-radius: 5px;
+}
+
+/* Scale up gallery items on hover */
+.gallery-view.large .gallery-item:hover {
+    transform: scale(1.01);
+}
+/* Scale up gallery items on hover */
+.gallery-view.small .gallery-item:hover {
+    transform: scale(1.01);
+    background-color: rgba(255, 255, 255, 0.088);
+
+}
+
+.gallery-item,
+.gallery-item-detail {
+   background-color: #1a1a1a00;
+    color: white;
+    position: relative; /* For absolute positioned arrows */
+    padding: 1rem;
+    border-radius: 5px;
+    box-shadow: 0 4px 8px rgb(0, 0, 0);
+    
+}
+/* Large View */
+.gallery-container {
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(250px, 1fr)); /* Adjust the minmax values for your preferred size */
+    grid-gap: 5px; /* Space between items */
+
+}
+/* CSS for the gallery items' large and small views */
+.gallery-container .gallery-item {
+    box-sizing: border-box;
+    overflow: hidden;
+  }
+  
+  /* Large View */
+  .gallery-container.large .gallery-item {
+    width: calc(33.333% - 200px); /* Three items per row with margins */
+    display: inline-block;
+    vertical-align: top;
+    flex-direction: column;
+
+
+  }
+  
+  .gallery-container.large .gallery-item img {
+    width: 100%;
+    display: block;
+  }
+ 
+ 
+
+/* Styling gallery items in small view mode */
+.gallery-container.small .gallery-item,
+.gallery-view.small .gallery-item {
+    display: flex; /* Use flexbox for layout */
+    align-items: center; /* Aligns items vertically */
+    background-color: rgba(255, 255, 255, 0); /* Adjust color and opacity to match mockup */
+    backdrop-filter: blur(1.5px);
+        color: white; /* Text color */
+    border-radius: 5px; /* Rounded corners */
+    overflow: hidden; /* Ensures content fits within the item */
+}
+
+.gallery-container.small .gallery-item img {
+    width: 100%; /* Full width images */
+    height: auto; /* Maintain aspect ratio */
+}
+/* Styling the thumbnail images in small view */
+.gallery-container.small .gallery-item img,
+.gallery-view.small .gallery-item img {
+    width: 80px; /* Thumbnail width */
+    height: 80px; /* Thumbnail height */
+    object-fit: cover; /* Ensures image covers the area without distortion */
+    margin-right: 10px; /* Space between image and details */
+}
+/* Styling the details section in small view */
+.gallery-container.small .gallery-item .details,
+.gallery-view.small .gallery-item .details {
+    display: flex;
+    flex-direction: column; /* Stacks details vertically */
+
+}
+
+
+
+
+  
+  /* Apply to the description paragraph in small view */
+.gallery-container.small .gallery-item .item-description {
+    overflow: hidden; /* Hide overflow */
+    text-overflow: ellipsis; /* Add ellipsis */
+    display: -webkit-box;
+    -webkit-line-clamp: 2; /* Limit to two lines */
+    -webkit-box-orient: vertical;
+    width: 100%; /* Ensure the width is set to allow for text-overflow */
+}
+  
+ 
+.gallery-image,
+.gallery-detail-image,
+.gallery-detail-media { /* Handles both images and videos */
+    max-width: 100%;
+    height: auto;
+    display: block;
+}
+.gallery-title, .gallery-description {
+    text-align: center;
+    margin: 15px;
+}
+
+
+.nav-arrow {
+    position: absolute;
+    top: 50%;
+    transform: translateY(-50%);
+    background: rgba(0, 0, 0, 0.5);
+    color: white;
+    border: none;
+    padding: 10px;
+    cursor: pointer;
+    font-size: 24px;
+    border-radius: 50%;
+    transition: background-color 0.3s ease;
+    z-index: 3000;
+}
+
+.nav-arrow:hover {
+    background-color: rgba(0, 0, 0, 0.8);
+}
+
+.left-arrow {
+    left: 10px;
+}
+
+.right-arrow {
+    right: 10px;
+}
+
+.media-wrapper {
+    max-width: 600px;
+    margin: 0 auto;
+}
+
+/* Ensuring the detailed view is centered */
+.gallery-item-detail {
+    display: flex;
+    flex-direction: row;
+    gap: 30px;
+    align-items: flex-start;
+    max-width: 1200px;
+    padding: 20px;
+    
+    position: relative;
+    text-align: center;
+    background-color: rgba(255, 255, 255, 0); /* Adjust color and opacity to match mockup */
+    backdrop-filter: blur(1.5px);
+    border-radius: 5px;
+    box-shadow: 0 4px 8px rgb(0, 0, 0);
+    margin: 20px auto; /* Center the carousel */
+    
+}
+
+.media-column {
+    flex: 1;
+    min-width: 50%;
+    position: relative;
+}
+
+.media-column {
+    flex: 1;
+    max-width: 1s00px;
+    position: relative;
+}
+
+.main-media-container {
+    order: 1;
+    margin-bottom: 15px;
+    width: 100%;
+    padding: 0;
+}
+.gallery-item-detail p {
+    margin: 5px 0;
+    font-size: 1rem;
+    color: #ccc;
+}
+
+.gallery-item-detail h3 {
+        font-size: var(--h1);
+        position: relative;
+        display: inline-block;
+
+}
+
+.gallery-item-detail h3::after {
+    content: '';
+    position: absolute;
+    bottom: -5px;
+    left: 0;
+    width: 100%;
+    height: 2px;
+    background: #ffffff;
+  } 
+
+
+
+.gallery-item-detail img {
+    margin: 3px; /* Add margin around each image */
+    box-sizing: border-box; /* Ensure padding doesn't add to the total size */
+    border-radius: 5px; /* Match the existing border-radius style */
+}
+.gallery-detail-image, 
+.gallery-item-detail img {
+    width: 100%;        /* Scale to container width */
+    height: auto;       /* Maintain aspect ratio */
+    max-width: 500px;   /* Limit maximum width */
+    max-height: 500px;  /* Optional: Limit maximum height */
+    object-fit: contain; /* Ensure images fit within bounds without distortion */
+    display: block;     /* Remove extra spacing */
+    border-radius: 5px; /* Consistent rounded corners */
+    box-sizing: border-box;
+}
+
+.gallery-detail-image,
+.gallery-detail-media {
+    max-width: 100%;
+    max-height: 60vh;
+    margin: 0 auto 10px auto;
+    border-radius: 8px;
+    display: block;
+}
+
+.media-details {
+    order: 0;
+    margin: 0;
+    text-align: left;
+}
+
+.thumbnails-container {
+    display: flex;
+    gap: 10px;
+    flex-wrap: wrap;
+    margin-top: 15px;
+}
+
+.thumbnail {
+    width: 60px !important;
+    height: 60px !important;
+    min-width: 60px;
+    min-height: 60px;
+    object-fit: cover;
+    border-radius: 4px;
+    cursor: pointer;
+    border: 2px solid transparent;
+    transition: border-color 0.3s ease;
+}
+
+.thumbnails-container img.thumbnail {
+    flex-shrink: 0;
+    flex-grow: 0;
+}
+
+.thumbnail.active {
+    border-color: #007bff; /* Highlight active thumbnail */
+}
+
+.thumbnail:hover {
+    border-color: #ff0000; /* Highlight on hover */
+}
+
+
+/* PayPal Container */
+.paypal-container {
+    margin-top: 20px;
+}
+
+@keyframes slideIn {
+    from {
+      opacity: 0;
+      transform: translateY(20px);
+    }
+    to {
+      opacity: 1;
+      transform: translateY(0);
+    }
+  }
+  
+  .gallery-item {
+    animation: slideIn 0.6s cubic-bezier(0.23, 1, 0.32, 1) forwards;
+    opacity: 0;
+  }
+
+  .gallery-item:nth-child(1) { animation-delay: 0.01s; }
+.gallery-item:nth-child(2) { animation-delay: 0.02s; }
+.gallery-item:nth-child(3) { animation-delay: 0.03s; }
+.gallery-item:nth-child(4) { animation-delay: 0.05s; }
+.gallery-item:nth-child(5) { animation-delay: 0.08s; }
+.gallery-item:nth-child(6) { animation-delay: 0.13s; }
+.gallery-item:nth-child(7) { animation-delay: 0.21s; }
+.gallery-item:nth-child(8) { animation-delay: 0.34s; }
+.gallery-item:nth-child(9) { animation-delay: 0.55s; }
+.gallery-item:nth-child(10) { animation-delay: 0.89s; }
+.gallery-item:nth-child(11) { animation-delay: 1.44s; }
+.gallery-item:nth-child(12) { animation-delay: 2.33s; }
+
+  
+
+/* Responsive adjustments */
+@media (max-width: 768px) {
+
+    .home-button {
+        font-size: 1rem;
+    }
+    .gallery-item-detail {
+        flex-direction: column;
+            padding: 10px;
+}
+    
+    .details-column {
+        flex: 1;
+        width: 100%;
+        position: static;
+    }
+    
+    .media-column {
+        max-width: 100%;
+    }
+    .gallery-container {
+        grid-template-columns: repeat(auto-fill, minmax(150px, 1fr));
+    }
+    
+    
+    
+    .gallery-detail-image,
+    .gallery-detail-media {
+        max-height: 50vh;
+    }
+}
